@@ -9,7 +9,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import project.dao.UserDao;
-import project.model.User;
+import project.model.Users;
 
 @Repository
 public class UserDaoImp implements UserDao {
@@ -18,31 +18,31 @@ public class UserDaoImp implements UserDao {
    private SessionFactory sessionFactory;
 
    @Override
-   public long save(User user) {
+   public long save(Users user) {
       sessionFactory.getCurrentSession().save(user);
       return user.getId();
    }
 
    @Override
-   public User get(long id) {
-      return sessionFactory.getCurrentSession().get(User.class, id);
+   public Users get(long id) {
+      return sessionFactory.getCurrentSession().get(Users.class, id);
    }
 
    @Override
-   public List<User> list() {
+   public List<Users> list() {
       Session session = sessionFactory.getCurrentSession();
       CriteriaBuilder cb = session.getCriteriaBuilder();
-      CriteriaQuery<User> cq = cb.createQuery(User.class);
-      Root<User> root = cq.from(User.class);
+      CriteriaQuery<Users> cq = cb.createQuery(Users.class);
+      Root<Users> root = cq.from(Users.class);
       cq.select(root);
-      Query<User> query = session.createQuery(cq);
+      Query<Users> query = session.createQuery(cq);
       return query.getResultList();
    }
 
    @Override
-   public void update(long id, User user) {
+   public void update(long id, Users user) {
       Session session = sessionFactory.getCurrentSession();
-      User user2 = session.byId(User.class).load(id);
+      Users user2 = session.byId(Users.class).load(id);
       user2.setUsername(user.getUsername());
       user2.setPassword(user.getPassword());
       user2.setEmail(user.getEmail());
@@ -52,7 +52,7 @@ public class UserDaoImp implements UserDao {
    @Override
    public void delete(long id) {
       Session session = sessionFactory.getCurrentSession();
-      User user = session.byId(User.class).load(id);
+      Users user = session.byId(Users.class).load(id);
       session.delete(user);
    }
 

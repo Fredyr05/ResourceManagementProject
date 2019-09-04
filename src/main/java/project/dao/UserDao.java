@@ -1,17 +1,17 @@
 package project.dao;
 
 import java.util.List;
-import project.model.User;
+import project.model.Users;
 
 public interface UserDao {
 
-	   long save(User user);
+	   long save(Users user);
 
-	   User get(long id);
+	   Users get(long id);
 
-	   List<User> list();
+	   List<Users> list();
 
-	   void update(long id, User user);
+	   void update(long id, Users user);
 
 	   void delete(long id);
 
