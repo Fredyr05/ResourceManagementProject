@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import project.dao.UserDao;
-import project.model.User;
+import project.model.Users;
 
 @Service
 @Transactional(readOnly = true)
@@ -18,23 +18,23 @@ public class UserServiceImp implements UserService {
 
    @Transactional
    @Override
-   public long save(User user) {
+   public long save(Users user) {
       return userDao.save(user);
    }
 
    @Override
-   public User get(long id) {
+   public Users get(long id) {
       return userDao.get(id);
    }
 
    @Override
-   public List<User> list() {
+   public List<Users> list() {
       return userDao.list();
    }
 
    @Transactional
    @Override
-   public void update(long id, User user) {
+   public void update(long id, Users user) {
       userDao.update(id, user);
    }
 

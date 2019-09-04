@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import project.model.User;
+import project.model.Users;
 import project.service.UserService;
 
 @RestController
@@ -23,36 +23,36 @@ public class UserController {
 
    /*---Add new user---*/
    @PostMapping("/user")
-   public ResponseEntity<?> save(@RequestBody User user) {
+   public ResponseEntity<?> save(@RequestBody Users user) {
       long id = userService.save(user);
-      return ResponseEntity.ok().body("New User has been saved with ID:" + id);
+      return ResponseEntity.ok().body("New Users has been saved with ID:" + id);
    }
 
    /*---Get a user by id---*/
    @GetMapping("/user/{id}")
-   public ResponseEntity<User> get(@PathVariable("id") long id) {
-      User user = userService.get(id);
+   public ResponseEntity<Users> get(@PathVariable("id") long id) {
+      Users user = userService.get(id);
       return ResponseEntity.ok().body(user);
    }
 
    /*---get all users---*/
    @GetMapping("/user")
-   public ResponseEntity<List<User>> list() {
-      List<User> users = userService.list();
+   public ResponseEntity<List<Users>> list() {
+      List<Users> users = userService.list();
       return ResponseEntity.ok().body(users);
    }
 
    /*---Update a user by id---*/
    @PutMapping("/user/{id}")
-   public ResponseEntity<?> update(@PathVariable("id") long id, @RequestBody User user) {
+   public ResponseEntity<?> update(@PathVariable("id") long id, @RequestBody Users user) {
       userService.update(id, user);
-      return ResponseEntity.ok().body("User has been updated successfully.");
+      return ResponseEntity.ok().body("Users has been updated successfully.");
    }
 
    /*---Delete a user by id---*/
    @DeleteMapping("/user/{id}")
    public ResponseEntity<?> delete(@PathVariable("id") long id) {
       userService.delete(id);
-      return ResponseEntity.ok().body("User has been deleted successfully.");
+      return ResponseEntity.ok().body("Users has been deleted successfully.");
    }
 }
