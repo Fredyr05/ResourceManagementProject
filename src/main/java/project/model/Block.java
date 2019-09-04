@@ -17,11 +17,11 @@ public class Block {
 	
 	@ManyToOne
 	@JoinColumn(name = "colId")
-	private Long colId;
+	private Column column;
 	
 	@ManyToOne
 	@JoinColumn(name = "resId")
-	private Long resId;
+	private Resource resource;
 	
 	public Long getBlockId() {
 		return blockId;
@@ -39,20 +39,20 @@ public class Block {
 		this.value = value;
 	}
 	
-	public Long getColId() {
-		return colId;
+	public Column getColumn() {
+		return column;
 	}
 	
-	public void setColId(Long colId) {
-		this.colId = colId;
+	public void setColumn(Column column) {
+		this.column = column;
 	}
 	
-	public Long getResId() {
-		return resId;
+	public Resource getResource() {
+		return resource;
 	}
 	
-	public void setResId(Long resId) {
-		this.resId = resId;
+	public void setResource(Resource resource) {
+		this.resource = resource;
 	}
 	
 }

@@ -18,7 +18,7 @@ public class Column {
 	
 	@ManyToOne
 	@JoinColumn(name = "projId")
-	private Long projId;
+	private Project project;
 	
 	public Long getColId() {
 		return colId;
@@ -44,12 +44,12 @@ public class Column {
 		this.type = type;
 	}
 	
-	public Long getProjId() {
-		return projId;
+	public Project getProject() {
+		return project;
 	}
 	
-	public void setProjId(Long projId) {
-		this.projId = projId;
+	public void setProject(Project project) {
+		this.project = project;
 	}
 	
 }
