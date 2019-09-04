@@ -17,7 +17,7 @@ public class Block {
 	
 	@ManyToOne
 	@JoinColumn(name = "colId")
-	private Column column;
+	private Columns columns;
 	
 	@ManyToOne
 	@JoinColumn(name = "resId")
@@ -39,12 +39,12 @@ public class Block {
 		this.value = value;
 	}
 	
-	public Column getColumn() {
-		return column;
+	public Columns getColumns() {
+		return columns;
 	}
 	
-	public void setColumn(Column column) {
-		this.column = column;
+	public void setColumns(Columns columns) {
+		this.columns = columns;
 	}
 	
 	public Resource getResource() {

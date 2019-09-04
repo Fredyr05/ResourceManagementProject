@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity(name = "Columns")
-public class Column {
+public class Columns {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
