@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity(name = "Column")
+@Entity(name = "Columns")
 public class Column {
 
 	@Id
