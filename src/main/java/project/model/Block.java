@@ -39,6 +39,7 @@ public class Block {
 		this.value = value;
 	}
 	
+	//@JsonManagedReference
 	public Columns getColumns() {
 		return columns;
 	}
@@ -47,6 +48,7 @@ public class Block {
 		this.columns = columns;
 	}
 	
+	//@JsonManagedReference
 	public Resource getResource() {
 		return resource;
 	}

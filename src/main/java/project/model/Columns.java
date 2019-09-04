@@ -44,6 +44,7 @@ public class Columns {
 		this.type = type;
 	}
 	
+	//@JsonManagedReference
 	public Project getProject() {
 		return project;
 	}
