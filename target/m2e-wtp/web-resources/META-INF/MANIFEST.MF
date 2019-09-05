@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: chen_
 Build-Jdk: 1.8.0_221
+=======
+Built-By: bolan
+Build-Jdk: 12.0.2
+>>>>>>> dev_john
 Created-By: Maven Integration for Eclipse
 
