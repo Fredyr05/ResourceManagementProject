@@ -9,5 +9,6 @@ public interface FormulaService {
 	List<Block> getBlocks(long projectid);
 	long saveColumns(List<Columns> columns);
 	long saveBlocks(List<Block> blocks);
+	long save(Formula formula);
 	
 }
