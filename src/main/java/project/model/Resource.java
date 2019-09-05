@@ -1,5 +1,6 @@
 package project.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,7 @@ public class Resource {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long resId;
+	@Column(unique = true)
 	private String resCode;
 	private String resName;
 	
