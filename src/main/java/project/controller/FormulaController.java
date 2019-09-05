@@ -19,16 +19,16 @@ import project.service.FormulaService;
 @RestController
 public class FormulaController {
 
-//   @Autowired
-//   private FormulaService formulaService;
-//
-//   /*---Add new formula---*/
-//   @PostMapping("/formula")
-//   public ResponseEntity<?> save(@RequestBody Formula formula) {
-//      long id = formulaService.save(formula);
-//      return ResponseEntity.ok().body("New Formula has been saved with ID:" + id);
-//   }
-//
+   @Autowired
+   private FormulaService formulaService;
+
+   /*---Add new formula---*/
+   @PostMapping("/formula")
+   public ResponseEntity<?> save(@RequestBody Formula formula) {
+      long id = formulaService.save(formula);
+      return ResponseEntity.ok().body("New Formula has been saved with ID:" + id);
+   }
+
 //   /*---Get a formula by id---*/
 //   @GetMapping("/formula/{id}")
 //   public ResponseEntity<Formula> get(@PathVariable("id") long id) {
