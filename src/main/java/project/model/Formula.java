@@ -4,27 +4,31 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Formula {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	private int colId;
+	private Long id;
+	
+	@OneToOne
+	private Columns columns;
+	
 	private String equation;
 	
-	public int getFormulaId() {
+	public Long getFormulaId() {
 		return id;
 	}
-	public void setFormulaId(int formulaId) {
+	public void setFormulaId(Long formulaId) {
 		this.id = formulaId;
 	}
-	public int getColId() {
-		return colId;
+	public Columns getCol() {
+		return this.columns;
 	}
-	public void setColId(int colId) {
-		this.colId = colId;
+	public void setColumn(Columns columns) {
+		this.columns = columns;
 	}
 	public String getEquation() {
 		return equation;
