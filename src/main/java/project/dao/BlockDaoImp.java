@@ -47,7 +47,10 @@ public class BlockDaoImp implements BlockDao {
 		block2.setValue(block.getValue());
 		session.flush();
 	}
-
+	public void saveOrUpdate(Block block) {
+		Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(block);
+	}
 	@Override
 	public void delete(long id) {
 		Session session = sessionFactory.getCurrentSession();
