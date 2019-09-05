@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+0:0:0:0:0:0:0:1 - - [04/Sep/2019:16:18:39 -0400] "POST /user HTTP/1.1" 200 34 http-bio-8080-exec-2 605
+0:0:0:0:0:0:0:1 - - [04/Sep/2019:16:19:06 -0400] "POST /ResourceManagementProject/user HTTP/1.1" 404 949 http-bio-8080-exec-3 5
+0:0:0:0:0:0:0:1 - - [04/Sep/2019:16:21:58 -0400] "POST /RPM/user HTTP/1.1" 404 - http-bio-8080-exec-2 0
+0:0:0:0:0:0:0:1 - - [04/Sep/2019:16:25:36 -0400] "POST /RMP/user HTTP/1.1" 200 34 http-bio-8080-exec-2 333
+0:0:0:0:0:0:0:1 - - [04/Sep/2019:16:26:14 -0400] "POST /RMP/user HTTP/1.1" 200 34 http-bio-8080-exec-2 384
+0:0:0:0:0:0:0:1 - - [04/Sep/2019:16:27:51 -0400] "GET /RMP/user HTTP/1.1" 200 285 http-bio-8080-exec-5 297
+0:0:0:0:0:0:0:1 - - [04/Sep/2019:16:28:31 -0400] "GET /RMP/user/1 HTTP/1.1" 200 77 http-bio-8080-exec-6 43
+0:0:0:0:0:0:0:1 - - [04/Sep/2019:16:29:06 -0400] "DELETE /RMP/user/1 HTTP/1.1" 200 36 http-bio-8080-exec-7 178
+0:0:0:0:0:0:0:1 - - [04/Sep/2019:16:29:12 -0400] "GET /RMP/user HTTP/1.1" 200 217 http-bio-8080-exec-8 7
+0:0:0:0:0:0:0:1 - - [04/Sep/2019:16:29:36 -0400] "POST /RMP/user HTTP/1.1" 200 34 http-bio-8080-exec-9 22
+0:0:0:0:0:0:0:1 - - [04/Sep/2019:17:12:43 -0400] "GET /RMP/user HTTP/1.1" 200 283 http-bio-8080-exec-2 523
+=======
 0:0:0:0:0:0:0:1 - - [04/Sep/2019:23:02:35 -0400] "POST /RMP HTTP/1.1" 404 949 http-bio-19090-exec-2 40
 0:0:0:0:0:0:0:1 - - [04/Sep/2019:23:03:32 -0400] "POST /ResourceManagementProject/Users HTTP/1.1" 404 949 http-bio-19090-exec-3 2
 0:0:0:0:0:0:0:1 - - [04/Sep/2019:23:03:34 -0400] "POST /ResourceManagementProject/User HTTP/1.1" 404 949 http-bio-19090-exec-4 2
@@ -6,3 +19,4 @@
 0:0:0:0:0:0:0:1 - - [04/Sep/2019:23:06:46 -0400] "POST /User HTTP/1.1" 404 949 http-bio-19090-exec-9 1
 0:0:0:0:0:0:0:1 - - [04/Sep/2019:23:07:09 -0400] "POST /user HTTP/1.1" 200 34 http-bio-19090-exec-10 567
 0:0:0:0:0:0:0:1 - - [04/Sep/2019:23:07:28 -0400] "GET /user HTTP/1.1" 200 66 http-bio-19090-exec-10 293
+>>>>>>> master
