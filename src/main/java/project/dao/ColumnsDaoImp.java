@@ -55,5 +55,19 @@ public class ColumnsDaoImp implements ColumnsDao{
 		Columns columns = session.byId(Columns.class).load(id);
 		session.delete(columns);
 	}
+	@Override
+	public List<Columns> getByProject(long projectid){
+		Session session = sessionFactory.getCurrentSession();
+		Query<Columns> query = session.createQuery("from Columns as col where col.projId= ?");
+		query.setParameter("?", projectid);
+		return query.getResultList();		
+	}
+	@Override
+	public List<Long> getIdsByProject(long projectid){
+		Session session = sessionFactory.getCurrentSession();
+		Query<Long> query = session.createQuery("select colId from Columns as col where col.projId= ?");
+		query.setParameter("?", projectid);
+		return query.getResultList();		
+	}
 
 }
