@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import project.model.Columns;
 
-public class ColumnsDaoImp implements ColumnsDao{
+public class ColumnsDaoImp implements ColumnsDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -55,19 +55,21 @@ public class ColumnsDaoImp implements ColumnsDao{
 		Columns columns = session.byId(Columns.class).load(id);
 		session.delete(columns);
 	}
+
 	@Override
-	public List<Columns> getByProject(long projectid){
+	public List<Columns> getByProject(long projectid) {
 		Session session = sessionFactory.getCurrentSession();
-		Query<Columns> query = session.createQuery("from Columns as col where col.projId= ?");
+		Query<Columns> query = session.createQuery("from Columns as col where col.projId= ?", Columns.class);
 		query.setParameter("?", projectid);
-		return query.getResultList();		
+		return query.getResultList();
 	}
+
 	@Override
-	public List<Long> getIdsByProject(long projectid){
+	public List<Long> getIdsByProject(long projectid) {
 		Session session = sessionFactory.getCurrentSession();
-		Query<Long> query = session.createQuery("select colId from Columns as col where col.projId= ?");
+		Query<Long> query = session.createQuery("select colId from Columns as col where col.projId= ?", Long.class);
 		query.setParameter("?", projectid);
-		return query.getResultList();		
+		return query.getResultList();
 	}
 
 }

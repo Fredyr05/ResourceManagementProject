@@ -19,8 +19,8 @@ import project.service.FormulaService;
 @RestController
 public class FormulaController {
 
-   @Autowired
-   private FormulaService formulaService;
+   //@Autowired
+   //private FormulaService formulaService;
 
    /*---Add new formula---*/
 //   @PostMapping("/formula")

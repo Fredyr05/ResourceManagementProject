@@ -12,8 +12,10 @@ import project.model.Block;
 import project.model.Columns;
 
 public class FormulaServiceImp implements FormulaService {
+	
 	@Autowired
 	private BlockDao blockDao;
+	
 	@Autowired
 	private ColumnsDao columnsDao;
 	
