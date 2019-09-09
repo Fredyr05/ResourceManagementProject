@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: bolan
 Build-Jdk: 12.0.2
+=======
+Built-By: fredy
+Build-Jdk: 1.8.0_181
+>>>>>>> master
 Created-By: Maven Integration for Eclipse
 
