@@ -6,13 +6,14 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import project.model.Block;
+
 @Repository
 public class BlockDaoImp implements BlockDao {
 
@@ -48,21 +49,21 @@ public class BlockDaoImp implements BlockDao {
 		block2.setValue(block.getValue());
 		session.flush();
 	}
+
 	@Override
-	public List<Block> getByColumn(long columnId){
+	public List<Block> getByColumn(long columnId) {
 		Session session = sessionFactory.getCurrentSession();
-		Query<Block> query = session.createQuery("from Block as bk where bk.colId = ?");
-		query.setParameter("?",columnId);
+		Query<Block> query = session.createQuery("from Block as bk where bk.colId = ?", Block.class);
+		query.setParameter("?", columnId);
 		return query.getResultList();
-		
+
 	}
-	
+
 	@Override
 	public void delete(long id) {
 		Session session = sessionFactory.getCurrentSession();
 		Block block = session.byId(Block.class).load(id);
 		session.delete(block);
 	}
-	
 
 }
