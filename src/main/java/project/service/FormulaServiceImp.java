@@ -10,11 +10,7 @@ import project.dao.FormulaDao;
 import project.model.Formula;
 
 @Service
-<<<<<<< HEAD
 @Transactional(readOnly=true)
-=======
-@Transactional(readOnly = true)
->>>>>>> master
 public class FormulaServiceImp implements FormulaService {
 
 	@Autowired

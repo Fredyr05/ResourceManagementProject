@@ -15,11 +15,7 @@ import org.springframework.stereotype.Repository;
 import project.model.Columns;
 
 @Repository
-<<<<<<< HEAD
 public class ColumnsDaoImp implements ColumnsDao{
-=======
-public class ColumnsDaoImp implements ColumnsDao {
->>>>>>> master
 
 	@Autowired
 	private SessionFactory sessionFactory;
