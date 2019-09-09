@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.ColumnTransformer;
+
 @Entity(name = "Users")
 public class Users {
 
@@ -12,6 +14,8 @@ public class Users {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
    private String username;
+   
+   @ColumnTransformer(read="DECRYPTBYPASSPHRASE('encryptedPassword', password)", write="EncryptByPassPhrase('encryptedPassword', ?)")
    private String password;
    private String email;
 

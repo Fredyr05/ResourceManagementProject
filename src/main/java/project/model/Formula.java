@@ -24,7 +24,7 @@ public class Formula {
 	public void setFormulaId(Long formulaId) {
 		this.id = formulaId;
 	}
-	public Columns getCol() {
+	public Columns getColumns() {
 		return this.columns;
 	}
 	public void setColumn(Columns columns) {

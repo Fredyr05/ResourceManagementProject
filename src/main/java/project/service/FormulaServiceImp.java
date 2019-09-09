@@ -1,7 +1,5 @@
 package project.service;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +13,7 @@ import project.model.Columns;
 @Service
 @Transactional(readOnly = true)
 public class FormulaServiceImp implements FormulaService {
+
 	@Autowired
 	private BlockDao blockDao;
 	@Autowired
