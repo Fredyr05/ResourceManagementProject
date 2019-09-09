@@ -2,8 +2,7 @@ package project.service;
 
 import java.util.List;
 
-import project.model.*;
-
+import project.model.Formula;
 
 public interface FormulaService {
 
@@ -13,4 +12,3 @@ public interface FormulaService {
 	void saveOrUpdateColumns(List<Columns> columns) ;
 	
 }
-     
