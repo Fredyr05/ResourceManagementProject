@@ -11,7 +11,6 @@ public interface FormulaService {
 	List<Block> getBlocks(long projectid);
 	void saveOrUpdateBlocks(List<Block> blocks);
 	void saveOrUpdateColumns(List<Columns> columns) ;
-
 	
 }
      
