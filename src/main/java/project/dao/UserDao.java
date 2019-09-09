@@ -5,14 +5,14 @@ import project.model.Users;
 
 public interface UserDao {
 
-	   long save(Users user);
+	long save(Users user);
 
-	   Users get(long id);
+	Users get(long id);
 
-	   List<Users> list();
+	List<Users> list();
 
-	   void update(long id, Users user);
+	void update(long id, Users user);
 
-	   void delete(long id);
+	void delete(long id);
 
-	}
+}
