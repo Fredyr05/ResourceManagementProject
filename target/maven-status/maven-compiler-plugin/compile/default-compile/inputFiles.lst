@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 065e77e02337c4cad62fce3b073e9ad8d98627a3
 C:\Users\chen_\Desktop\Projects\ResourceManagementProject\src\main\java\project\model\Columns.java
 C:\Users\chen_\Desktop\Projects\ResourceManagementProject\src\main\java\project\service\ProjectService.java
 C:\Users\chen_\Desktop\Projects\ResourceManagementProject\src\main\java\project\model\Resource.java
@@ -24,6 +27,8 @@ C:\Users\chen_\Desktop\Projects\ResourceManagementProject\src\main\java\project\
 C:\Users\chen_\Desktop\Projects\ResourceManagementProject\src\main\java\project\dao\UserDaoImp.java
 C:\Users\chen_\Desktop\Projects\ResourceManagementProject\src\main\java\project\service\UserService.java
 C:\Users\chen_\Desktop\Projects\ResourceManagementProject\src\main\java\project\service\FormulaServiceImp.java
+<<<<<<< HEAD
+=======
 =======
 C:\Users\fredy\OneDrive\Desktop\Itlize Work\First project\ProjectRep\ResourceManagementProject\src\main\java\project\dao\FormulaDao.java
 C:\Users\fredy\OneDrive\Desktop\Itlize Work\First project\ProjectRep\ResourceManagementProject\src\main\java\project\service\BlockService.java
@@ -62,3 +67,4 @@ C:\Users\fredy\OneDrive\Desktop\Itlize Work\First project\ProjectRep\ResourceMan
 C:\Users\fredy\OneDrive\Desktop\Itlize Work\First project\ProjectRep\ResourceManagementProject\src\main\java\project\dao\ResourceDaoImp.java
 C:\Users\fredy\OneDrive\Desktop\Itlize Work\First project\ProjectRep\ResourceManagementProject\src\main\java\project\model\Columns.java
 >>>>>>> Dev_Fredy
+>>>>>>> 065e77e02337c4cad62fce3b073e9ad8d98627a3
