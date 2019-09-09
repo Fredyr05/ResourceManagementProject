@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import project.model.Formula;
 import project.model.Block;
+import project.model.Columns;
 import project.service.FormulaService;
 
 @RestController
@@ -21,12 +22,20 @@ public class FormulaController {
 
    @Autowired
    private FormulaService formulaService;
-   @PostMapping("/Blocks")
+   @PostMapping("Formula/Blocks")
    public ResponseEntity<?> saveBlocks(@RequestBody List<Block> blocks){
 	   formulaService.saveOrUpdateBlocks(blocks);
 	   return ResponseEntity.ok().body("New Users has been saved");
    }
-   
+   @GetMapping("Formula/Blocks/{projectid}")
+   public ResponseEntity<List<Block>> getBlocks(long projectid){
+	   return ResponseEntity.ok().body(formulaService.getBlocks(projectid));
+   }
+   @GetMapping("Formula/Columns/{projectid}")
+   public ResponseEntity<List<Columns>> getColumns(long projectid){
+	   return ResponseEntity.ok().body(formulaService.getColumnsByProject(projectid));
+   }
+
    /*---Add new formula---*/
 //   @PostMapping("/formula")
 //   public ResponseEntity<?> save(@RequestBody List<Formula> formulas) {

@@ -13,9 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import project.model.Columns;
-
 @Repository
-public class ColumnsDaoImp implements ColumnsDao {
+public class ColumnsDaoImp implements ColumnsDao{
 
 	@Autowired
 	private SessionFactory sessionFactory;
