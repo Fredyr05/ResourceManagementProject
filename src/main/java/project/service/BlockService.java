@@ -1,10 +1,10 @@
-package project.dao;
+package project.service;
 
 import java.util.List;
 
 import project.model.Block;
 
-public interface BlockDao {
+public interface BlockService {
 
 	long save(Block block);
 
@@ -12,10 +12,7 @@ public interface BlockDao {
 
 	List<Block> list();
 
-	void update(long id, Block column);
-
-	List<Block> getByColumn(long columnId);
+	void update(long id, Block block);
 
 	void delete(long id);
-
 }
