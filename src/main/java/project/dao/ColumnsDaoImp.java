@@ -56,7 +56,7 @@ public class ColumnsDaoImp implements ColumnsDao{
 		Columns columns = session.byId(Columns.class).load(id);
 		session.delete(columns);
 	}
-/*
+
 	@Override
 	public List<Columns> getByProject(long projectid) {
 		Session session = sessionFactory.getCurrentSession();
@@ -72,5 +72,5 @@ public class ColumnsDaoImp implements ColumnsDao{
 		query.setParameter("?", projectid);
 		return query.getResultList();
 	}
-*/
+
 }
