@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import project.model.Formula;
+import project.model.Block;
 import project.service.FormulaService;
 
 @RestController
@@ -21,7 +22,12 @@ public class FormulaController {
 
    @Autowired
    private FormulaService formulaService;
-
+   @PostMapping("/Blocks")
+   public ResponseEntity<?> saveBlocks(@RequestBody List<Block> blocks){
+	   formulaService.saveOrUpdateBlocks(blocks);
+	   return ResponseEntity.ok().body("New Users has been saved");
+   }
+   
    /*---Add new formula---*/
 //   @PostMapping("/formula")
 //   public ResponseEntity<?> save(@RequestBody List<Formula> formulas) {
