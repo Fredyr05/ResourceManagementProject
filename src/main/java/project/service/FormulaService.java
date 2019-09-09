@@ -2,7 +2,7 @@ package project.service;
 
 import java.util.List;
 
-import project.model.Formula;
+import project.model.*;
 
 public interface FormulaService {
 
