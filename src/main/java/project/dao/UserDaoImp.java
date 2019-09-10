@@ -40,7 +40,11 @@ public class UserDaoImp implements UserDao {
 
 	@Override
 	public Users get(long id) {
-		return sessionFactory.getCurrentSession().get(Users.class, id);
+		Users user = sessionFactory.getCurrentSession().get(Users.class, id);
+		System.out.println(user.getUsername());
+		System.out.println(user.getPassword());
+//		return sessionFactory.getCurrentSession().get(Users.class, id);
+		return user;
 	}
 
 	@Override

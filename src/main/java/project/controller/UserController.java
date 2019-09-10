@@ -32,6 +32,8 @@ public class UserController {
    @GetMapping("/user/{id}")
    public ResponseEntity<Users> get(@PathVariable("id") long id) {
       Users user = userService.get(id);
+      System.out.println("Password: "+user.getPassword());
+      System.out.println("username: "+user.getUsername());
       return ResponseEntity.ok().body(user);
    }
 
