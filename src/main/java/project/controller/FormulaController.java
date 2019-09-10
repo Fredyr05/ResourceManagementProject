@@ -25,7 +25,7 @@ public class FormulaController {
    @PostMapping("Formula/Blocks")
    public ResponseEntity<?> saveBlocks(@RequestBody List<Block> blocks){
 	   formulaService.saveOrUpdateBlocks(blocks);
-	   return ResponseEntity.ok().body("New Users has been saved");
+	   return ResponseEntity.ok().body("Blocks have been saved or updated");
    }
    @GetMapping("Formula/Blocks/{projectid}")
    public ResponseEntity<List<Block>> getBlocks(long projectid){
@@ -35,39 +35,10 @@ public class FormulaController {
    public ResponseEntity<List<Columns>> getColumns(long projectid){
 	   return ResponseEntity.ok().body(formulaService.getColumnsByProject(projectid));
    }
+   @PostMapping("Template/Columns")
+   public ResponseEntity<?> saveColumns(List<Columns> columns){
+	   formulaService.saveOrUpdateColumns(columns);
+	   return ResponseEntity.ok().body("Columns has been saved or updated");
+   }
 
-   /*---Add new formula---*/
-//   @PostMapping("/formula")
-//   public ResponseEntity<?> save(@RequestBody List<Formula> formulas) {
-//      long id = formulaService.save(formula);
-//      return ResponseEntity.ok().body("New Formula has been saved with ID:" + id);
-//   }
-
-//   /*---Get a formula by id---*/
-//   @GetMapping("/formula/{id}")
-//   public ResponseEntity<Formula> get(@PathVariable("id") long id) {
-//      Formula formula = formulaService.get(id);
-//      return ResponseEntity.ok().body(formula);
-//   }
-//
-//   /*---get all formulas---*/
-//   @GetMapping("/formula")
-//   public ResponseEntity<List<Formula>> list() {
-//      List<Formula> formulas = formulaService.list();
-//      return ResponseEntity.ok().body(formulas);
-//   }
-//
-//   /*---Update a formula by id---*/
-//   @PutMapping("/formula/{id}")
-//   public ResponseEntity<?> update(@PathVariable("id") long id, @RequestBody Formula formula) {
-//      formulaService.update(id, formula);
-//      return ResponseEntity.ok().body("Formula has been updated successfully.");
-//   }
-//
-//   /*---Delete a formula by id---*/
-//   @DeleteMapping("/formula/{id}")
-//   public ResponseEntity<?> delete(@PathVariable("id") long id) {
-//      formulaService.delete(id);
-//      return ResponseEntity.ok().body("Formula has been deleted successfully.");
-//   }
 }
