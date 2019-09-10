@@ -1,6 +1,8 @@
 package project.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,14 +32,14 @@ public class ProjectResourceController {
 	@PostMapping("/project/{projId}/resource/{resId}")
 	public ResponseEntity<?> addResourceToProject(@PathVariable("projId") long projId, @PathVariable("resId") long resId){
 		long id = resourceService.addToProject(projId, resId);
-		return ResponseEntity.ok().body("Added resource to project: " + id);
+		return ResponseEntity.ok().body("Added resource " + resId + " to project: " + id);
 	}
 	
-	/*---Add new resource to project---*/
+	/*---Add NEW resource to project---*/
 	@PostMapping("/project/{projId}/resource")
 	public ResponseEntity<?> addNewResourceToProject(@PathVariable("projId") long projId, @RequestBody Resource resource){
 		long id = resourceService.saveAddedProject(projId, resource);
-		return ResponseEntity.ok().body("Added resource to project: " + id);
+		return ResponseEntity.ok().body("Added resource " + resource.getResId() + " to project: " + id);
 	}
 	
 	/*---Add new Resource---*/
@@ -68,7 +70,7 @@ public class ProjectResourceController {
 		return ResponseEntity.ok().body(project);
 	}
 
-	/*---get all projects---*/
+	/*---get all resources---*/
 	@GetMapping("/resource")
 	public ResponseEntity<List<Resource>> listResources() {
 		List<Resource> resources = resourceService.list();
@@ -80,6 +82,18 @@ public class ProjectResourceController {
 	public ResponseEntity<List<Project>> listProjects() {
 		List<Project> projects = projectService.list();
 		return ResponseEntity.ok().body(projects);
+	}
+	
+	/*---get all resources in a specific project---*/
+	@GetMapping("/project/{id}/resources")
+	public ResponseEntity<List<Resource>> listResourcesInProject(@PathVariable("id") long projId) {
+		Project project = projectService.get(projId);
+		List<Resource> resources = new ArrayList<Resource>();
+		Set<Resource> resInProj = project.getResources();
+		for(Resource resource : resInProj) {
+			resources.add(resource);
+		}
+		return ResponseEntity.ok().body(resources);
 	}
 
 	/*---Update a resource by id---*/
