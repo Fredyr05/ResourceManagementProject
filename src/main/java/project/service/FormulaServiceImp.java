@@ -9,8 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import project.dao.BlockDao;
 import project.dao.ColumnsDao;
+import project.dao.FormulaDao;
 import project.model.Block;
 import project.model.Columns;
+import project.model.Formula;
 @Service
 @Transactional(readOnly=true)
 public class FormulaServiceImp implements FormulaService {
@@ -19,6 +21,8 @@ public class FormulaServiceImp implements FormulaService {
 	private BlockDao blockDao;
 	@Autowired
 	private ColumnsDao columnsDao;
+	@Autowired
+	private FormulaDao formulaDao;
 	@Override
 	public List<Columns> getColumnsByProject(long projectid) {
 		List<Columns> list;
@@ -34,6 +38,16 @@ public class FormulaServiceImp implements FormulaService {
 			blocklist.addAll(blockDao.getByColumn(i));
 		}
 		return blocklist;
+	}
+	@Override
+	public List<Formula> getFormulas(long projectid){
+		List<Long> list;
+		List<Formula> formulalist = new ArrayList<Formula>();
+		list = columnsDao.getIdsByProject(projectid);
+		for(long i:list) {
+			formulalist.add(formulaDao.getByColumn(i));
+		}
+		return formulalist;
 	}
 	@Transactional
 	@Override
@@ -57,6 +71,18 @@ public class FormulaServiceImp implements FormulaService {
 			}
 			else {
 				columnsDao.update(column.getColId(),column);
+			}
+		}
+	}
+	@Transactional
+	@Override
+	public void saveOrUpdateFormulas(List<Formula> formulas) {
+		for (Formula formula : formulas) {
+			if(formula.getFormulaId()==null) {
+				formulaDao.save(formula);
+			}
+			else {
+				formulaDao.update(formula.getFormulaId(),formula);
 			}
 		}
 	}
