@@ -12,7 +12,7 @@ import project.dao.ColumnsDao;
 import project.model.Block;
 import project.model.Columns;
 @Service
-@Transactional(readOnly = true)
+@Transactional(readOnly=true)
 public class FormulaServiceImp implements FormulaService {
 
 	@Autowired
