@@ -60,4 +60,10 @@ public class ResourceServiceImp implements ResourceService {
 	public List<Resource> getResourcesInProject(long projId){
 		return resourceDao.getResourcesInProject(projId);
 	}
+	
+	@Transactional
+	@Override
+	public void deleteResourceByProject(long projId, long resId) {
+		resourceDao.deleteResourceByProject(projId, resId);
+	}
 }
