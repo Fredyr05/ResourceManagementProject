@@ -11,7 +11,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import project.model.Formula;
 
 @Repository
@@ -30,7 +29,19 @@ public class FormulaDaoImp implements FormulaDao {
 	public Formula get(long id) {
 		return sessionFactory.getCurrentSession().get(Formula.class, id);
 	}
-
+	
+	@Override
+	public Formula getByColumn(long colId) {
+		Session session = sessionFactory.getCurrentSession();
+		Query<Formula> query = session.createQuery("from Formula as bk where bk.colId = ?", Formula.class);
+		query.setParameter("?", colId);
+		if(query.getSingleResult()!=null)
+			return query.getSingleResult();
+		else {
+			return null;
+		}
+	}
+	
 	@Override
 	public List<Formula> list() {
 		Session session = sessionFactory.getCurrentSession();

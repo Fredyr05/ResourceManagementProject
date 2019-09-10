@@ -9,6 +9,8 @@ public interface FormulaDao {
 	long save(Formula formula);
 
 	Formula get(long id);
+	
+	Formula getByColumn(long colId);
 
 	List<Formula> list();
 

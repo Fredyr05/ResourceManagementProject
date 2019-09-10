@@ -53,8 +53,11 @@ public class BlockDaoImp implements BlockDao {
 		Session session = sessionFactory.getCurrentSession();
 		Query<Block> query = session.createQuery("from Block as bk where bk.colId = ?", Block.class);
 		query.setParameter("?", columnId);
-		return query.getResultList();
-
+		if(query.getResultList()!=null)
+			return query.getResultList();
+		else {
+			return null;
+		}
 	}
 
 	@Override

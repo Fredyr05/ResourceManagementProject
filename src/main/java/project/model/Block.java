@@ -1,6 +1,6 @@
 package project.model;
 
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +14,7 @@ public class Block {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long blockId;
-	private Long value;
+	private String value;
 	
 	@ManyToOne
 	@JoinColumn(name = "colId")
@@ -32,11 +32,11 @@ public class Block {
 		this.blockId = blockId;
 	}
 	
-	public Long getValue() {
+	public String getValue() {
 		return value;
 	}
 	
-	public void setValue(Long value) {
+	public void setValue(String value) {
 		this.value = value;
 	}
 	
