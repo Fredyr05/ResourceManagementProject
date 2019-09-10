@@ -44,11 +44,6 @@ public class ResourceServiceImp implements ResourceService {
 		resourceDao.delete(resId);
 	}
 	
-	/**
-	 * addToProject
-	 * @param takes the projId of a project and the resId of a resource
-	 * @return Returns the projId of the project
-	 */
 	@Transactional
 	@Override
 	public long addToProject(long projId, long resId) {
@@ -59,5 +54,10 @@ public class ResourceServiceImp implements ResourceService {
 	@Override
 	public long saveAddedProject(long projId, Resource resource) {
 		return resourceDao.saveAddedProject(projId, resource);
+	}
+	
+	@Override
+	public List<Resource> getResourcesInProject(long projId){
+		return resourceDao.getResourcesInProject(projId);
 	}
 }

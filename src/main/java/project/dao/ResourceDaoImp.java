@@ -1,6 +1,8 @@
 package project.dao;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -73,6 +75,17 @@ public class ResourceDaoImp implements ResourceDao {
 	public long saveAddedProject(long projId, Resource resource) {
 		sessionFactory.getCurrentSession().save(resource);
 		return resource.getResId();
+	}
+	
+	@Override
+	public List<Resource> getResourcesInProject(long projId) {
+		Project project = sessionFactory.getCurrentSession().getReference(Project.class, projId);
+		List<Resource> resources = new ArrayList<Resource>();
+		Set<Resource> resInProj = project.getResources();
+		for(Resource resource : resInProj) {
+			resources.add(resource);
+		}
+		return resources;
 	}
 
 }
