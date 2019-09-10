@@ -18,5 +18,7 @@ public interface ResourceService {
 	long addToProject(long projId, long resId);
 
 	long saveAddedProject(long projId, Resource resource);
+	
+	List<Resource> getResourcesInProject(long projId);
 
 }

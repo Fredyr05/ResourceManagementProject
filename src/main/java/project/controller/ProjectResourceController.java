@@ -87,12 +87,7 @@ public class ProjectResourceController {
 	/*---get all resources in a specific project---*/
 	@GetMapping("/project/{id}/resources")
 	public ResponseEntity<List<Resource>> listResourcesInProject(@PathVariable("id") long projId) {
-		Project project = projectService.get(projId);
-		List<Resource> resources = new ArrayList<Resource>();
-		Set<Resource> resInProj = project.getResources();
-		for(Resource resource : resInProj) {
-			resources.add(resource);
-		}
+		List<Resource> resources = resourceService.getResourcesInProject(projId);
 		return ResponseEntity.ok().body(resources);
 	}
 
