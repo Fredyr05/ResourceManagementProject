@@ -1,8 +1,6 @@
 package project.controller;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -108,8 +106,8 @@ public class ProjectResourceController {
 	/*---Delete a resource by id---*/
 	@DeleteMapping("/resource/{id}")
 	public ResponseEntity<?> deleteResource(@PathVariable("id") long id) {
-		projectService.delete(id);
-		return ResponseEntity.ok().body("Project has been deleted successfully.");
+		resourceService.delete(id);
+		return ResponseEntity.ok().body("Resource has been deleted successfully.");
 	}
 	
 	/*---Delete a project by id---*/
@@ -117,6 +115,13 @@ public class ProjectResourceController {
 	public ResponseEntity<?> deleteProject(@PathVariable("id") long id) {
 		projectService.delete(id);
 		return ResponseEntity.ok().body("Project has been deleted successfully.");
+	}
+	
+	/*---Delete a resource from a project---*/
+	@DeleteMapping("/project/{projId}/resource/{resId}")
+	public ResponseEntity<?> deleteResourceInProject(@PathVariable("projId") long projId, @PathVariable("resId") long resId) {
+		resourceService.deleteResourceByProject(projId,resId);
+		return ResponseEntity.ok().body("Resource in Project has been deleted successfully.");
 	}
 
 }
