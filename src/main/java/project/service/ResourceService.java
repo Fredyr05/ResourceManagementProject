@@ -20,5 +20,7 @@ public interface ResourceService {
 	long saveAddedProject(long projId, Resource resource);
 	
 	List<Resource> getResourcesInProject(long projId);
+	
+	void deleteResourceByProject(long projId, long resId);
 
 }

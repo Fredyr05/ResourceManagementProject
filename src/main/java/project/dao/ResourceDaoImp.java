@@ -87,5 +87,14 @@ public class ResourceDaoImp implements ResourceDao {
 		}
 		return resources;
 	}
+	
+	@Override
+	public void deleteResourceByProject(long projId, long resId) {
+		Session session = sessionFactory.getCurrentSession();
+		Project project = session.byId(Project.class).getReference(projId);
+		Resource resource = session.byId(Resource.class).getReference(resId);
+		project.getResources().remove(resource);
+		session.update(project);
+	}
 
 }
