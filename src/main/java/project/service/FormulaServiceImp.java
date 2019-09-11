@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import project.dao.BlockDao;
 import project.dao.ColumnsDao;
@@ -64,10 +65,11 @@ public class FormulaServiceImp implements FormulaService {
 	}
 	@Transactional
 	@Override
-	public void saveOrUpdateColumns(List<Columns> columns) {
+	public void saveOrUpdateColumns(long projectid,List<Columns> columns) {
 		for (Columns column : columns) {
 			if(column.getColId()==null) {
-				columnsDao.save(column);
+				
+				columnsDao.save(projectid,column);
 			}
 			else {
 				columnsDao.update(column.getColId(),column);

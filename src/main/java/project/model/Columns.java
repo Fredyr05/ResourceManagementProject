@@ -1,11 +1,15 @@
 package project.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity(name = "Columns")
 public class Columns {
@@ -17,8 +21,14 @@ public class Columns {
 	private String type;
 	
 	@ManyToOne
-	@JoinColumn(name = "projId")
+	@JoinColumn(name = "projId",nullable = false)
 	private Project project;
+	
+	@OneToMany(mappedBy="columns")
+	private Set<Block> blocks;
+	
+	@OneToOne(mappedBy="columns")
+	private Formula formula;
 	
 	public Long getColId() {
 		return colId;
@@ -44,7 +54,6 @@ public class Columns {
 		this.type = type;
 	}
 	
-	//@JsonManagedReference
 	public Project getProject() {
 		return project;
 	}
