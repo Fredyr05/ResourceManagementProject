@@ -12,6 +12,9 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import project.model.Block;
+import project.model.Resource;
+import project.model.Columns;
+
 @Repository
 public class BlockDaoImp implements BlockDao {
 
@@ -20,7 +23,14 @@ public class BlockDaoImp implements BlockDao {
 
 	@Override
 	public long save(Block block) {
-		sessionFactory.getCurrentSession().save(block);
+		Session session = sessionFactory.getCurrentSession();
+		long colId = block.getColumns().getColId();
+		long resId = block.getResource().getResId();
+		Columns columns = (Columns)session.get(Columns.class,colId);
+		Resource resource = (Resource)session.get(Resource.class,resId);
+		block.setColumns(columns);
+		block.setResource(resource);
+		session.save(block);
 		return block.getBlockId();
 	}
 

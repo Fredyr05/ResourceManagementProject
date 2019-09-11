@@ -11,7 +11,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import project.model.Project;
 import project.model.Columns;
 @Repository
 public class ColumnsDaoImp implements ColumnsDao{
@@ -20,8 +22,12 @@ public class ColumnsDaoImp implements ColumnsDao{
 	private SessionFactory sessionFactory;
 
 	@Override
-	public long save(Columns columns) {
-		sessionFactory.getCurrentSession().save(columns);
+	public long save(long projectid,Columns columns) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		Project project = (Project)session.get(Project.class, projectid);
+		columns.setProject(project);
+		session.save(columns);
 		return columns.getColId();
 	}
 

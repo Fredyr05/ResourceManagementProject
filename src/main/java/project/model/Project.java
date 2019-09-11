@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity(name = "Project")
 public class Project {
@@ -26,7 +27,10 @@ public class Project {
 			@JoinColumn(name = "projId", referencedColumnName = "projId") }, inverseJoinColumns = {
 					@JoinColumn(name = "resId", referencedColumnName = "resId") })
 	private Set<Resource> resources = new HashSet<Resource>(0);
-
+	
+	@OneToMany(mappedBy="project")
+	private Set<Columns> columns;
+	
 	public long getProjId() {
 		return projId;
 	}
@@ -50,5 +54,8 @@ public class Project {
 	public void setResources(Set<Resource> resources) {
 		this.resources = resources;
 	}
-
+	
+	public void setColumns(Set<Columns> columns) {
+		this.columns = columns;
+	}
 }

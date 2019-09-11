@@ -2,11 +2,13 @@ package project.dao;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.PathVariable;
+
 import project.model.Columns;
 
 public interface ColumnsDao {
 
-	long save(Columns columns);
+	long save(long projectid,Columns columns);
 
 	Columns get(long id);
 

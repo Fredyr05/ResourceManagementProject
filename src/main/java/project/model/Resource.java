@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity(name = "Resource")
 public class Resource {
@@ -23,6 +25,9 @@ public class Resource {
 	
 	@ManyToMany(mappedBy="resources",fetch=FetchType.EAGER)
 	private Set<Project> projects = new HashSet<Project>(0);
+	
+	@OneToMany(mappedBy="resource")
+	private Set<Block> blocks;
 	
 	public long getResId() {
 		return resId;
