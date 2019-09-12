@@ -41,9 +41,19 @@ public class UserDaoImp implements UserDao {
 	@Override
 	public Users get(long id) {
 		Users user = sessionFactory.getCurrentSession().get(Users.class, id);
-		System.out.println(user.getUsername());
-		System.out.println(user.getPassword());
+		authenticate(user);
+//		System.out.println(user.getUsername());
+//		System.out.println(user.getPassword());
 //		return sessionFactory.getCurrentSession().get(Users.class, id);
+//		String password = user.getPassword();
+//		String temp = "password123";
+		
+//		if(temp.equals(password)){
+//			System.out.println("Password Matches");
+//		}
+//		else {
+//			System.out.println("Password does not match");
+//		}
 		return user;
 	}
 
@@ -97,6 +107,37 @@ public class UserDaoImp implements UserDao {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public Users authenticate(Users user) {
+		boolean usernameExist = false;
+		boolean passwordMatch = false;
+		
+		String username = user.getUsername();
+		String password = user.getPassword();
+		
+		if(findByUsername(username)) {
+			usernameExist = true;
+			try {
+				Connection con = sessionFactory.getSessionFactoryOptions().getServiceRegistry().getService(ConnectionProvider.class).getConnection();
+				sessionFactory.getCurrentSession();
+				String query = "SELECT password FROM Users where username=?";
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setString(1,username);
+				ResultSet rs = null;
+				rs = ps.executeQuery();
+				rs.next();
+				rs.getNCharacterStream(3);
+				System.out.println("rs: "+ rs);
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return user;
+		
 	}
 
 }
