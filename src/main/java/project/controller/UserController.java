@@ -32,10 +32,17 @@ public class UserController {
    @GetMapping("/user/{id}")
    public ResponseEntity<Users> get(@PathVariable("id") long id) {
       Users user = userService.get(id);
-      System.out.println("Password: "+user.getPassword());
-      System.out.println("username: "+user.getUsername());
       return ResponseEntity.ok().body(user);
    }
+   
+   //user authenticate//
+   @GetMapping("/login")
+   public ResponseEntity<Users> login(@RequestBody Users user) {
+	   
+      return ResponseEntity.ok().body(user);
+   }
+   
+   
 
    /*---get all users---*/
    @GetMapping("/user")
