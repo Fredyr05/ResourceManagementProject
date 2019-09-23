@@ -65,5 +65,7 @@ public class Columns {
 	public void setProject(Project project) {
 		this.project = project;
 	}
-	
+	public Long getProjId() {
+		return project.getProjId();
+	}
 }
