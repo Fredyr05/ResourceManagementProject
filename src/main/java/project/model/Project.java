@@ -1,5 +1,5 @@
 package project.model;
-
+import com.fasterxml.jackson.annotation.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity(name = "Project")
+
 public class Project {
 
 	@Id
@@ -28,17 +29,18 @@ public class Project {
 					@JoinColumn(name = "resId", referencedColumnName = "resId") })
 	private Set<Resource> resources = new HashSet<Resource>(0);
 	
-	@OneToMany(mappedBy="project")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="project", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Set<Columns> columns;
 	
 	public long getProjId() {
 		return projId;
 	}
-
+	 
 	public void setProjId(long projId) {
 		this.projId = projId;
 	}
-
+	
 	public String getProjName() {
 		return projName;
 	}
@@ -57,5 +59,8 @@ public class Project {
 	
 	public void setColumns(Set<Columns> columns) {
 		this.columns = columns;
+	}
+	public Set<Columns> getColumns(){
+		return this.columns;
 	}
 }

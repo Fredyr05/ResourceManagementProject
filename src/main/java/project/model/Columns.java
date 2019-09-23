@@ -1,8 +1,10 @@
 package project.model;
-
+import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity(name = "Columns")
+
 public class Columns {
 
 	@Id
@@ -20,7 +23,9 @@ public class Columns {
 	private String colName;
 	private String type;
 	
-	@ManyToOne
+	
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JsonBackReference
 	@JoinColumn(name = "projId",nullable = false)
 	private Project project;
 	
@@ -29,7 +34,6 @@ public class Columns {
 	
 	@OneToOne(mappedBy="columns")
 	private Formula formula;
-	
 	public Long getColId() {
 		return colId;
 	}
@@ -53,13 +57,15 @@ public class Columns {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
+
 	public Project getProject() {
 		return project;
 	}
-	
+
 	public void setProject(Project project) {
 		this.project = project;
 	}
-	
+	public Long getProjId() {
+		return project.getProjId();
+	}
 }

@@ -1,6 +1,7 @@
 package project.dao;
 
-import java.util.List;
+import java.util.*;
+
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -65,18 +66,24 @@ public class ColumnsDaoImp implements ColumnsDao{
 
 	@Override
 	public List<Columns> getByProject(long projectid) {
-		Session session = sessionFactory.getCurrentSession();
-		Query<Columns> query = session.createQuery("from Columns as col where col.projId= ?", Columns.class);
-		query.setParameter("?", projectid);
-		return query.getResultList();
+		Project project = sessionFactory.getCurrentSession().getReference(Project.class, projectid);
+		Set<Columns> columnsset = project.getColumns();
+	    ArrayList<Columns> columnlist=new ArrayList<Columns>();
+	    for(Columns column: columnsset) {
+	    	columnlist.add(column);
+	    }
+		return columnlist;
 	}
 
 	@Override
 	public List<Long> getIdsByProject(long projectid) {
-		Session session = sessionFactory.getCurrentSession();
-		Query<Long> query = session.createQuery("select colId from Columns as col where col.projId= ?", Long.class);
-		query.setParameter("?", projectid);
-		return query.getResultList();
+		Project project = sessionFactory.getCurrentSession().getReference(Project.class, projectid);
+		Set<Columns> columnsset = project.getColumns();
+	    ArrayList<Long> columnlist=new ArrayList<Long>();
+	    for(Columns column: columnsset) {
+	    	columnlist.add(column.getColId());
+	    }
+	    return columnlist;
 	}
 
 }
