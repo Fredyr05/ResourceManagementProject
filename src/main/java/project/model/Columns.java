@@ -32,8 +32,9 @@ public class Columns {
 	@OneToMany(mappedBy="columns")
 	private Set<Block> blocks;
 	
-	@OneToOne(mappedBy="columns")
+	@OneToOne(fetch = FetchType.EAGER, mappedBy="columns", cascade = CascadeType.ALL)
 	private Formula formula;
+	
 	public Long getColId() {
 		return colId;
 	}
@@ -65,7 +66,14 @@ public class Columns {
 	public void setProject(Project project) {
 		this.project = project;
 	}
-	public Long getProjId() {
-		return project.getProjId();
+
+	public String getEquation() {
+		if(formula!=null)
+		return formula.getEquation();
+		else {
+			return null;
+		}
 	}
+
+
 }
