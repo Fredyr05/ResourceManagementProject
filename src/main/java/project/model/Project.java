@@ -30,7 +30,7 @@ public class Project {
 	private Set<Resource> resources = new HashSet<Resource>(0);
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="project", cascade = CascadeType.ALL)
-	@JsonIgnore
+
 	private Set<Columns> columns;
 	
 	public long getProjId() {
