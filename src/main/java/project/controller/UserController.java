@@ -36,9 +36,12 @@ public class UserController {
    }
    
    //user authenticate//
-   @GetMapping("/login")
+   @PostMapping("/login")
    public ResponseEntity<Users> login(@RequestBody Users user) {
 	   
+	   boolean success = userService.authenticate(user);
+	   
+	   user.setPassword(Boolean.toString(success));
       return ResponseEntity.ok().body(user);
    }
    

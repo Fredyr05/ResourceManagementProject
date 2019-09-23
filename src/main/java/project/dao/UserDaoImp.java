@@ -1,5 +1,6 @@
 package project.dao;
 
+import java.io.Reader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,19 +42,7 @@ public class UserDaoImp implements UserDao {
 	@Override
 	public Users get(long id) {
 		Users user = sessionFactory.getCurrentSession().get(Users.class, id);
-		authenticate(user);
-//		System.out.println(user.getUsername());
-//		System.out.println(user.getPassword());
-//		return sessionFactory.getCurrentSession().get(Users.class, id);
-//		String password = user.getPassword();
-//		String temp = "password123";
-		
-//		if(temp.equals(password)){
-//			System.out.println("Password Matches");
-//		}
-//		else {
-//			System.out.println("Password does not match");
-//		}
+		//authenticate(user);
 		return user;
 	}
 
@@ -109,7 +98,7 @@ public class UserDaoImp implements UserDao {
 		return false;
 	}
 	
-	public Users authenticate(Users user) {
+	public boolean authenticate(Users user) {
 		boolean usernameExist = false;
 		boolean passwordMatch = false;
 		
@@ -121,14 +110,25 @@ public class UserDaoImp implements UserDao {
 			try {
 				Connection con = sessionFactory.getSessionFactoryOptions().getServiceRegistry().getService(ConnectionProvider.class).getConnection();
 				sessionFactory.getCurrentSession();
-				String query = "SELECT password FROM Users where username=?";
+				String query = "SELECT id,username,convert(nvarchar(max),decryptbypassphrase('encryptedPassword',password)) as decrypted FROM Users where username=?";
 				PreparedStatement ps = con.prepareStatement(query);
 				ps.setString(1,username);
 				ResultSet rs = null;
 				rs = ps.executeQuery();
 				rs.next();
-				rs.getNCharacterStream(3);
-				System.out.println("rs: "+ rs);
+				String decrypted =rs.getString("decrypted");
+				Users temp = this.get(rs.getInt(1));
+				System.out.println("id: "+temp.getId());
+				System.out.println("username: "+temp.getUsername());
+				System.out.println("password: "+temp.getPassword());
+				System.out.println("decrypted: "+decrypted);
+				
+				if(decrypted.equals(password)) {
+					return true;
+				}
+				else {
+					return false;
+				}
 				
 			}catch(Exception e) {
 				e.printStackTrace();
@@ -136,7 +136,7 @@ public class UserDaoImp implements UserDao {
 			
 		}
 		
-		return user;
+		return false;
 		
 	}
 
