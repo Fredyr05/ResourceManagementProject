@@ -3,6 +3,7 @@ package project.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name = "Resource")
 public class Resource {
@@ -26,7 +29,8 @@ public class Resource {
 	@ManyToMany(mappedBy="resources",fetch=FetchType.EAGER)
 	private Set<Project> projects = new HashSet<Project>(0);
 	
-	@OneToMany(mappedBy="resource")
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL,mappedBy="resource")
+	@JsonIgnore
 	private Set<Block> blocks;
 	
 	public long getResId() {
