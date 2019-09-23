@@ -42,4 +42,11 @@ public class UserServiceImp implements UserService {
       userDao.delete(id);
    }
 
+@Override
+public boolean authenticate(Users user) {
+	// TODO Auto-generated method stub
+	return userDao.authenticate(user);
+	
+}
+
 }

@@ -17,4 +17,6 @@ public interface UserDao {
 	
 	boolean findByUsername(String username);
 
+	boolean authenticate(Users user);
+
 }
